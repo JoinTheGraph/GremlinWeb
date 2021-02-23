@@ -1,0 +1,29 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+@if (!Model.People.Any())
+{
+    <p>There are no people records in the database.</p>
+}
+else
+{
+    <table border="1" cellpadding="5">
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+        </tr>
+
+        @foreach (IDictionary<string, object> person in Model.People)
+        {
+            <tr>
+                <td>@person["ID"]</td>
+                <td>@person["FirstName"]</td>
+                <td>@person["LastName"]</td>
+            </tr>
+        }
+    </table>
+}
